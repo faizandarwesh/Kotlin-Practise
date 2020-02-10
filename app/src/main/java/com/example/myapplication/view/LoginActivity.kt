@@ -38,19 +38,24 @@ class LoginActivity : AppCompatActivity(){
         
         if(isUserExist){
         sign_up_option.setOnClickListener {
-            startActivity(Intent(applicationContext,RegisterActivity::class.java))
-            showToast("Login Successfully !"}
+            userLogin()
+             
         }
         }
         else {
         showToast("Invalid user, Please try again"}
     }
 
-                  
+    
+    private fun userLogin(){
+     startActivity(Intent(applicationContext,RegisterActivity::class.java))
+            showToast("Login Successfully !"}
+    }      
+                      
     private fun checkUserExist(){
     }
                   
-    private fun fieldValidation(){
+    private fun fieldValidation() :Boolean {
 
         var valid = true
         
@@ -80,7 +85,7 @@ class LoginActivity : AppCompatActivity(){
     
         }
 
-
+    return valid
 
     }
 }
