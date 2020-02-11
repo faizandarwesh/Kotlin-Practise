@@ -12,9 +12,10 @@
     <string name="empty_fields">Please fill the required fields</string>
     <string name="empty_email">Email field can\'t left blank</string>
     <string name="empty_password">Password field can\'t left blank</string>
-    <string name="sign_in_placeholder_text">New User? <b><i> Sign Up </i></b> </string>
+    <string name="sign_in_placeholder_text">New User?  <font color='#2196F3'><b><i> Sign Up </i></b></font> </string>
     <string name="valid_login">Login Successfully</string>
     <string name="invalid_login">Login Failed</string>
     <string name="invalid_email">Email address is not a valid one</string>
     <string name="password_less_digit_error">Password must contain atleast six digits</string>
+    <string name="user_image_place_holder">user_image_place_holder</string>
 </resources>

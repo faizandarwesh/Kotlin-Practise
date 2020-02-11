@@ -48,9 +48,9 @@ abstract class MyDatabase : RoomDatabase() {
 
         override fun doInBackground(vararg params: Void?): Void? {
 
-            db!!.userDao.insert(User(1,"","",""))
-            db.userDao.insert(User(2,"","",""))
-            db.userDao.insert(User(3,"","",""))
+            db!!.userDao.insert(User(username = "Test1",email = "test1gmail.com",password = "test1password"))
+            db.userDao.insert(User(username = "Test2",email = "test2gmail.com",password = "test2password"))
+            db.userDao.insert(User(username = "Test3",email = "test3gmail.com",password = "test3password"))
 
             return null
         }

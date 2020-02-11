@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import com.example.myapplication.R
+import com.example.myapplication.repository.UserRepository
 import com.example.myapplication.utils.showToast
 import kotlinx.android.synthetic.main.activity_loginctivity.*
 import kotlinx.android.synthetic.main.activity_register.*
@@ -12,7 +13,7 @@ import kotlinx.android.synthetic.main.activity_register.*
 class LoginActivity : AppCompatActivity(){
 
     private var isValidUser:Boolean = false
-     private var isUserExist:Boolean = false
+    private var isUserExist:Boolean = false
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,31 +29,36 @@ class LoginActivity : AppCompatActivity(){
         
     }
 
-    private fun initWidgets(){
-        
-        isValidUser = fieldValidation()
-        
-        if(isValidUser) {
-        isUserExist = checkUserExist()
-        }
-        
-        if(isUserExist){
+    private fun initWidgets() {
+
         sign_up_option.setOnClickListener {
-            userLogin()
-             
+            startActivity(Intent(applicationContext,RegisterActivity::class.java))
         }
+
+        isValidUser = fieldValidation()
+
+        if (isValidUser) {
+            isUserExist = checkUserExist()
         }
-        else {
-        showToast("Invalid user, Please try again"}
+
+        if (isUserExist) {
+            sign_in_button.setOnClickListener {
+                userLogin()
+            }
+        } else {
+            showToast("Invalid user, Please try again")
+        }
+
     }
 
-    
     private fun userLogin(){
      startActivity(Intent(applicationContext,RegisterActivity::class.java))
-            showToast("Login Successfully !"}
+            showToast("Login Successfully !")
     }      
                       
-    private fun checkUserExist(){
+    private fun checkUserExist(): Boolean {
+
+       return false
     }
                   
     private fun fieldValidation() :Boolean {
@@ -73,16 +79,11 @@ class LoginActivity : AppCompatActivity(){
                  valid = false
             }
             if (TextUtils.isEmpty(sign_in_password.text.toString())){
-            sign_in_password.error = getString(R.string.empty_password)
-            valid = false
+                 sign_in_password.error = getString(R.string.empty_password)
+                 valid = false
             }
 
-            //Sign Up
-            if (sign_in_password.text.toString().length < 6)
-            {    sign_in_password.error = getString(R.string.password_less_digit_error)
-             valid = false
-            }
-    
+
         }
 
     return valid

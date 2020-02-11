@@ -38,6 +38,10 @@ class UserRepository(application: Application) {
         return userData
     }
 
+    fun checkUserExist(user:User) {
+        queryForUser(userDao).execute(user)
+    }
+
     private class InsertData(val userDao: UserDao?): AsyncTask<User, Void, Void>()
     {
         override fun doInBackground(vararg user: User?): Void? {
@@ -68,6 +72,15 @@ class UserRepository(application: Application) {
 
         override fun doInBackground(vararg user: User?): Void? {
             userDao!!.deleteAll()
+            return null
+        }
+
+    }
+
+    private class queryForUser(val userDao: UserDao?) : AsyncTask<User, Void, Void>() {
+
+        override fun doInBackground(vararg user: User?): Void? {
+            userDao!!.checkUserRegistration()
             return null
         }
 

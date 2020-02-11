@@ -81,7 +81,7 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun registerUser(){
-        userViewModel!!.insert(User(1,enter_username.text.toString(),enter_email.text.toString(),enter_password.text.toString()))
+        userViewModel!!.insert(User(username = enter_username.text.toString(),email = enter_email.text.toString(),password = enter_password.text.toString()))
     }
 
 }
