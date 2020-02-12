@@ -38,8 +38,8 @@ class UserRepository(application: Application) {
         return userData
     }
 
-    fun checkUserExist(user:User) {
-        queryForUser(userDao).execute(user)
+    fun checkUserExist(username: String, password: String) {
+        queryForUser(userDao,username,password).execute()
     }
 
     private class InsertData(val userDao: UserDao?): AsyncTask<User, Void, Void>()
@@ -77,12 +77,12 @@ class UserRepository(application: Application) {
 
     }
 
-    private class queryForUser(val userDao: UserDao?) : AsyncTask<User, Void, Void>() {
-
-        override fun doInBackground(vararg user: User?): Void? {
-            userDao!!.checkUserRegistration()
+    private class queryForUser(val userDao: UserDao?,val username: String,val password: String) : AsyncTask<Void, Void, Void>() {
+        override fun doInBackground(vararg params: Void?): Void? {
+            userDao!!.checkUserRegistration(username,password)
             return null
         }
+
 
     }
 

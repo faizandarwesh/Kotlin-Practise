@@ -35,4 +35,8 @@ class UserViewModel(application: Application) : AndroidViewModel(application) {
     fun getAllUsers():LiveData<List<User>>?{
         return allUsers
     }
+
+    fun repoCheckUser(username:String,password:String){
+        repository!!.checkUserExist(username,password)
+    }
 }
